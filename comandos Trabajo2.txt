@@ -1,0 +1,47 @@
+1. Crear archivos:	touch ruta/archivo
+			#La ruta debe existir
+			touch downloads/prueba.txt
+
+Crear carpetas:		mkdir -p ruta
+			#-p crea las carpetas padres que no existan
+			mkdir -p downloads/p/pruebas
+	
+2. Cambiar nombre:	mv ruta/archivo1	ruta/archivo2
+			mv down/prueba.txt	down/prueba2.txt
+
+3. Eliminar archivo:	rm -f ruta/archivo
+			#-f es para forzar
+			rm -f pruebas.txt
+	
+Eliminar carpeta:	rm -rf ruta
+			rm -rf downloads/p
+	
+4. Copiar archivo:	cp ruta1/archivo ruta2
+			cp downloads/p.txt desktop/
+
+Copiar carpeta:		cp -R ruta1 ruta2
+			#-R es para recursión
+			cp -R downloads/p desktop/
+	
+5. Mostrar permisos:	ls -l | awk '{print $1,$3,$9}'
+			#Se imprimen las columnas 1,3,9 (permisos, propietario y nombre del archivo o carpeta)
+			#Los permisos vienen en este formato: TipoDeObjeto_PermisosPropietario_PermisosGrupo_OtrosPermisos
+			#A nosotros solo nos interesan los permisos del propietario.
+			#TipoDeObjeto: El primer caracter del permiso, 'd' es para directorio, '-' es para archivo.
+			#PermisosPropietario: los siguientes 3 caracteres, siempre vienen en este orden rwx (read, write, execute)
+			
+			#Ejemplo: -rw-rw-r-- Es un archivo (empieza con '-') con permisos para leer y escribir.
+			#Ejemplo: drwxrwxr-x Es un directorio (empieza con '-') con permisos para leer, escribir y ejecutar.
+			
+6. Cambiar permisos:	sudo chmod permisos ruta/archivo
+			sudo chmod -w Desktop/p.txt	#Se elimina el permiso de escritura
+			sudo chmod +rw p.txt		#Se añaden los permisos de lectura y escritura
+			
+7. Cambiar propietario:	sudo chown usuario ruta/archivo
+			sudo chown jeison Downloads/p.txt
+			
+8. Mover archivo:	mv ruta1/archivo ruta2
+			mv Downloads/p.txt Desktop/
+			
+Mover carpeta:		mv ruta1 ruta2
+			mv Downloads/prueba Downloads

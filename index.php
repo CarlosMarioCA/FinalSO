@@ -20,17 +20,30 @@
 
 <body>
      <?php 
-     $currentDirectory = "/" ;
-     $currentDirectory = "/Users/andres/phpA/";
+        
+     #setcookie("currentDirectory", "/Users/andres/phpA",time() + (86400 * 30), "/");
+     if(is_null($_COOKIE["currentDirectory"])){
+         setcookie("currentDirectory", "/Users/andres/phpA",time() + (86400 * 30), "/");
+     }
+
      ?>
     <ul class="nav">
         
    
     <!--Barra de navegación-->
-    
-        <li class="nav-pills" >
-            <a class="nav-link border rounded bg-dark active" href="index.php"> <?php echo $currentDirectory ?> </a>
-        </li>
+    <?php 
+    $currentDirectory = $_COOKIE["currentDirectory"];
+    $currentDirectoryModified = ltrim($currentDirectory, $currentDirectory[0]);
+    $items = explode("/", $currentDirectoryModified );
+    $breadcrumb = '';
+     foreach ($items as $folder_name){
+         $breadcrumb = $breadcrumb.'/'.$folder_name;
+        echo '<li class="nav-pills" >
+            <a class="nav-link border rounded bg-dark active" href="go_to.php?dir='.$breadcrumb.'">'.$folder_name.'  </a>
+        </li>';
+     }
+    ?>
+       
      
     </ul>
 
@@ -40,24 +53,33 @@
        </p>
 
 
-       
+    
        <ul>
 
-        <?php
-        #$currentDirectory = "/Applications/Ampps/www/Ficheros";
+    <?php
         
       #system("ls /Users/andres -ltr");
      
-    $items = explode("<BR>" , str_replace("\n", "<BR>", shell_exec("ls ".$currentDirectory)));
-    
+    $items = explode("<BR>" , str_replace("\n", "<BR>", shell_exec("ls -l ".$_COOKIE["currentDirectory"])));
+
     if ($items){
 
         foreach ($items as $fila){
-           
+          
     ?>
 
        <li class="nav-pills" >
-            <a class="nav-link border rounded bg-dark active" href="Index.html"> <?php echo explode(" ",$fila)[0] ?><?php echo explode(" ",$fila)[2] ?> </a>
+           
+            <a class="nav-link border rounded bg-dark active" href="#"> <?php echo explode(" ",$fila)[0]; ?> </a>
+            <?php if(explode(" ",$fila)[0][0] == "d"){
+                #echo "hola";
+                echo "<a class='nav-link border rounded bg-dark active' href='go_to.php?dir=".$_COOKIE["currentDirectory"].'/'.end(explode(" ",$fila))."'>".end(explode(" ",$fila))." </a>";
+            } else {
+                ?>
+                 <a class="nav-link border rounded bg-dark active" href="#"> <?php echo end(explode(" ",$fila)); ?> </a>
+                <?php
+            }
+             ?>
         </li>
 
     <?php
@@ -74,7 +96,7 @@
                         <div class="card-body">
                             <form action="Ficheros/Insert_fichero.php" class="form-group" method="post">
 
-                                <!--Tipo de identificación-->
+                                <!--Tipo recurso-->
                                 <div class="form-group">
                                     <label> Tipo: </label><br>
 
@@ -85,13 +107,12 @@
                                     </select>
                                 </div>
 
-                 
                                 <!--Nombre-->
                                 <div class="form-group">
                                     <label> Nombre: </label>
                                     <input style="width: 250px;" type="text" name="name" id="name" class="form-control">
                                 </div>
-                                <input type="hidden" id="currentDirectory" name="currentDirectory" value="<?php echo (isset($currentDirectory)) ?  $currentDirectory : '' ?>">
+                                <input type="hidden" id="currentDirectory" name="currentDirectory" value="<?php echo (isset($_COOKIE["currentDirectory"])) ?  $_COOKIE["currentDirectory"] : '' ?>">
                            
 
                                 <!--Botones-->

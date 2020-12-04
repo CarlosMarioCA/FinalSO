@@ -31,7 +31,7 @@ Copiar carpeta:		cp -R ruta1 ruta2
 			#PermisosPropietario: los siguientes 3 caracteres, siempre vienen en este orden rwx (read, write, execute)
 			
 			#Ejemplo: -rw-rw-r-- Es un archivo (empieza con '-') con permisos para leer y escribir.
-			#Ejemplo: drwxrwxr-x Es un directorio (empieza con '-') con permisos para leer, escribir y ejecutar.
+			#Ejemplo: drwxrwxr-x Es un directorio (empieza con 'd') con permisos para leer, escribir y ejecutar.
 			
 6. Cambiar permisos:	sudo chmod permisos ruta/archivo
 			sudo chmod -w Desktop/p.txt	#Se elimina el permiso de escritura

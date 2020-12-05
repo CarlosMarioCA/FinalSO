@@ -35,6 +35,9 @@
     $currentDirectory = $_COOKIE["currentDirectory"];
     $currentDirectoryModified = ltrim($currentDirectory, $currentDirectory[0]);
     $items = explode("/", $currentDirectoryModified );
+    echo '<li class="nav-pills" >
+            <a class="nav-link border rounded bg-dark active" href="go_to.php?dir=/"> /  </a>
+        </li>';
     $breadcrumb = '';
      foreach ($items as $folder_name){
          $breadcrumb = $breadcrumb.'/'.$folder_name;
@@ -155,7 +158,7 @@
 
 
 <div class="card-header bg-dark text-white">
-                            Crear Carpeta/Fichero
+                            Crear Carpeta/Archivo
                         </div>
                         <div class="card-body">
                             <form action="Insert_fichero.php" class="form-group" method="post">

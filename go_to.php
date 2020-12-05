@@ -8,7 +8,7 @@
         console_log($_COOKIE["currentDirectory"]);
 
     }
-     header("Location: /index.php");
+     header("Location: /FinalSO/index.php");
 
      function console_log( $data ){
   echo '<script>';

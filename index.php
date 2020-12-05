@@ -123,37 +123,7 @@
 </table>
 
 
-    <?php
-        
-      #system("ls /Users/andres -ltr");
-     
-    $items = explode("<BR>" , str_replace("\n", "<BR>", shell_exec("ls -l ".$_COOKIE["currentDirectory"])));
-
-    if ($items){
-
-        foreach ($items as $fila){
-          
-    ?>
-
-       <li class="nav-pills" >
-           
-            <a class="nav-link border rounded bg-dark active" href="#"> <?php echo explode(" ",$fila)[0]; ?> </a>
-            <?php if(explode(" ",$fila)[0][0] == "d"){
-                #echo "hola";
-                echo "<a class='nav-link border rounded bg-dark active' href='go_to.php?dir=".$_COOKIE["currentDirectory"].'/'.end(explode(" ",$fila))."'>".end(explode(" ",$fila))." </a>";
-            } else {
-                ?>
-                 <a class="nav-link border rounded bg-dark active" href="#"> <?php echo end(explode(" ",$fila)); ?> </a>
-                <?php
-            }
-             ?>
-        </li>
-
-    <?php
-          
-                                }
-                            }
-                        ?>
+   
 </ul>
 
 

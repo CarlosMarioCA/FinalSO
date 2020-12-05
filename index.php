@@ -56,6 +56,70 @@
     
        <ul>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Propietario</th> 
+      <th scope="col">Permisos</th> 
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <?php
+        
+      #system("ls /Users/andres -ltr");
+     
+    $items = explode("<BR>" , str_replace("\n", "<BR>", shell_exec("ls -l ".$_COOKIE["currentDirectory"])));
+
+    if ($items){
+
+        foreach ($items as $fila){
+          
+    ?>
+
+       <tr>
+           <td>
+            
+            <?php if(explode(" ",$fila)[0][0] == "d"){
+        
+                echo "<a class='nav-link border rounded bg-dark active' href='go_to.php?dir=".$_COOKIE["currentDirectory"].'/'.end(explode(" ",$fila))."'>".end(explode(" ",$fila))." </a>";
+            } else {
+                ?>
+                 <a class="nav-link border rounded bg-dark active" href="#"> <?php echo end(explode(" ",$fila)); ?> </a>
+                <?php
+            }
+             ?>
+               </td>
+               <td>
+             <?php echo explode(" ",$fila)[3];?>
+             </td> 
+             <td>
+             <?php echo explode(" ",$fila)[0];?>
+             </td>  
+
+            <td>
+            <?php 
+                echo '<a href="delete.php?dir='.$_COOKIE["currentDirectory"].'/'.end(explode(" ",$fila)).'">Eliminar</a>';
+            ?>
+            </td>  
+
+    </tr>
+         
+
+    <?php
+          
+                                }
+                            }
+                        ?>
+
+    
+                            
+  </tbody>
+</table>
+
+
     <?php
         
       #system("ls /Users/andres -ltr");
@@ -94,7 +158,7 @@
                             Crear Carpeta/Fichero
                         </div>
                         <div class="card-body">
-                            <form action="Ficheros/Insert_fichero.php" class="form-group" method="post">
+                            <form action="Insert_fichero.php" class="form-group" method="post">
 
                                 <!--Tipo recurso-->
                                 <div class="form-group">
@@ -102,7 +166,7 @@
 
                                     <select style="width: 250px;" name="tipo" id="tipo">
                                         <option value="FOLDER"> Carpeta </option>
-                                        <option value="FILE"> Fichero </option>
+                                        <option value="FILE"> Archivo </option>
                                        
                                     </select>
                                 </div>
@@ -118,7 +182,6 @@
                                 <!--Botones-->
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-success" value="Crear">
-                                   
                                 </div>
                             </form>
                         </div>

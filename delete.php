@@ -4,6 +4,6 @@
     if(!is_null($dir)){
       exec('rm -rf '.$dir)  ;
     }
-     header("Location: /index.php");
+     header("Location: /FinalSO/index.php");
 
 ?>

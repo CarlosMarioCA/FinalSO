@@ -36,7 +36,7 @@
     $currentDirectoryModified = ltrim($currentDirectory, $currentDirectory[0]);
     $items = explode("/", $currentDirectoryModified );
     echo '<li class="nav-pills" >
-            <a class="nav-link border rounded bg-light active" href="go_to.php?dir=/"> /  </a>
+            <a class="nav-link border rounded bg-dark active" href="go_to.php?dir=/"> /  </a>
         </li>';
     $breadcrumb = '';
      foreach ($items as $folder_name){

@@ -36,13 +36,13 @@
     $currentDirectoryModified = ltrim($currentDirectory, $currentDirectory[0]);
     $items = explode("/", $currentDirectoryModified );
     echo '<li class="nav-pills" >
-            <a class="nav-link border rounded bg-dark active" href="go_to.php?dir=/"> /  </a>
+            <a class="nav-link border rounded bg-light active" href="go_to.php?dir=/"> /  </a>
         </li>';
     $breadcrumb = '';
      foreach ($items as $folder_name){
          $breadcrumb = $breadcrumb.'/'.$folder_name;
         echo '<li class="nav-pills" >
-            <a class="nav-link border rounded bg-dark active" href="go_to.php?dir='.$breadcrumb.'">'.$folder_name.'  </a>
+            <a class="nav-link border rounded bg-light active" href="go_to.php?dir='.$breadcrumb.'">'.$folder_name.'  </a>
         </li>';
      }
     ?>
@@ -87,10 +87,10 @@
             
             <?php if(explode(" ",$fila)[0][0] == "d"){
         
-                echo "<a class='nav-link border rounded bg-dark active' href='go_to.php?dir=".$_COOKIE["currentDirectory"].'/'.end(explode(" ",$fila))."'>".end(explode(" ",$fila))." </a>";
+                echo "<a class='nav-link border rounded bg-light active' href='go_to.php?dir=".$_COOKIE["currentDirectory"].'/'.end(explode(" ",$fila))."'>".end(explode(" ",$fila))." </a>";
             } else {
                 ?>
-                 <a class="nav-link border rounded bg-dark active" href="#"> <?php echo end(explode(" ",$fila)); ?> </a>
+                 <a class="nav-link border rounded bg-light active" href="#"> <?php echo end(explode(" ",$fila)); ?> </a>
                 <?php
             }
              ?>

@@ -104,7 +104,7 @@
 
             <td>
             <?php 
-                echo '<a href="delete.php?dir='.$_COOKIE["currentDirectory"].'/'.end(explode(" ",$fila)).'">Eliminar</a>';
+                echo '<a href="delete.php?dir='.$_COOKIE["currentDirectory"].end(explode(" ",$fila)).'">Eliminar</a>';
             ?>
             </td>  
 

@@ -75,7 +75,7 @@
       #system("ls /Users/andres -ltr");
      
     $items = explode("<BR>" , str_replace("\n", "<BR>", shell_exec("ls -l ".$_COOKIE["currentDirectory"])));
-
+    $items = array_slice($items, 1, -1);
     if ($items){
 
         foreach ($items as $fila){

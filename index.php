@@ -42,7 +42,7 @@
      foreach ($items as $folder_name){
          $breadcrumb = $breadcrumb.'/'.$folder_name;
         echo '<li class="nav-pills" >
-            <a class="nav-link border rounded bg-light active" href="go_to.php?dir='.$breadcrumb.'">'.$folder_name.'  </a>
+            <a class="nav-link border rounded bg-dark active" href="go_to.php?dir='.$breadcrumb.'">'.$folder_name.'  </a>
         </li>';
      }
     ?>

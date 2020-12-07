@@ -21,7 +21,8 @@
         }else{
             createFile($currentDirectory , $name);
         }
-        header("Location: ../go_to.php?dir=".$_COOKIE["currentDirectory"]);
+        #header("Location: ../go_to.php?dir=".$_COOKIE["currentDirectory"]);
+        header("Location: /FinalSO/index.php");
     }
 
 function console_log( $data ){

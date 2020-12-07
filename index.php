@@ -75,7 +75,7 @@
       #system("ls /Users/andres -ltr");
      
     $items = explode("<BR>" , str_replace("\n", "<BR>", shell_exec("ls -l ".$_COOKIE["currentDirectory"])));
-
+    $items = array_slice($items, 1, -1);
     if ($items){
 
         foreach ($items as $fila){
@@ -87,10 +87,10 @@
             
             <?php if(explode(" ",$fila)[0][0] == "d"){
         
-                echo "<a class='nav-link border rounded bg-dark active' href='go_to.php?dir=".$_COOKIE["currentDirectory"].'/'.end(explode(" ",$fila))."'>".end(explode(" ",$fila))." </a>";
+                echo "<a class='nav-link border rounded bg-light active' href='go_to.php?dir=".$_COOKIE["currentDirectory"].'/'.end(explode(" ",$fila))."'>".end(explode(" ",$fila))." </a>";
             } else {
                 ?>
-                 <a class="nav-link border rounded bg-dark active" href="#"> <?php echo end(explode(" ",$fila)); ?> </a>
+                 <a class="nav-link border rounded bg-light active" href="#"> <?php echo end(explode(" ",$fila)); ?> </a>
                 <?php
             }
              ?>
